@@ -1,0 +1,12 @@
+E:\Learning\Catholik\Catholic.Domain\bin\Release\net7.0\Catholic.Domain.deps.json
+E:\Learning\Catholik\Catholic.Domain\bin\Release\net7.0\Catholic.Domain.dll
+E:\Learning\Catholik\Catholic.Domain\bin\Release\net7.0\Catholic.Domain.pdb
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.csproj.AssemblyReference.cache
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.AssemblyInfoInputs.cache
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.AssemblyInfo.cs
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.csproj.CoreCompileInputs.cache
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.dll
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\refint\Catholic.Domain.dll
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\Catholic.Domain.pdb
+E:\Learning\Catholik\Catholic.Domain\obj\Release\net7.0\ref\Catholic.Domain.dll

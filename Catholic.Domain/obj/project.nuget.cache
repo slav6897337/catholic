@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "8TZzLcx5Mr5yHhq4X5UsZVLOIJ1zo5txVSxv7hIvL327MpJ1TzzyMDCWOmz549Mb/oRCp3AIsTVvyOf6lU9m1Q==",
+  "success": true,
+  "projectFilePath": "E:\\Learning\\Catholik\\Catholic.Domain\\Catholic.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Stanislau\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.1\\microsoft.netcore.app.runtime.win-x64.7.0.1.nupkg.sha512",
+    "C:\\Users\\Stanislau\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.1\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.1.nupkg.sha512",
+    "C:\\Users\\Stanislau\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.1\\microsoft.aspnetcore.app.runtime.win-x64.7.0.1.nupkg.sha512",
+    "C:\\Users\\Stanislau\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\7.0.1\\microsoft.netcore.app.crossgen2.win-x64.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

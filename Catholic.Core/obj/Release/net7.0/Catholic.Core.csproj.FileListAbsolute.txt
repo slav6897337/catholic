@@ -1,0 +1,15 @@
+E:\Learning\Catholik\Catholic.Core\bin\Release\net7.0\Catholic.Core.deps.json
+E:\Learning\Catholik\Catholic.Core\bin\Release\net7.0\Catholic.Core.dll
+E:\Learning\Catholik\Catholic.Core\bin\Release\net7.0\Catholic.Core.pdb
+E:\Learning\Catholik\Catholic.Core\bin\Release\net7.0\Catholic.Domain.dll
+E:\Learning\Catholik\Catholic.Core\bin\Release\net7.0\Catholic.Domain.pdb
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.csproj.AssemblyReference.cache
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.AssemblyInfoInputs.cache
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.AssemblyInfo.cs
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.csproj.CoreCompileInputs.cache
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.csproj.CopyComplete
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.dll
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\refint\Catholic.Core.dll
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\Catholic.Core.pdb
+E:\Learning\Catholik\Catholic.Core\obj\Release\net7.0\ref\Catholic.Core.dll
