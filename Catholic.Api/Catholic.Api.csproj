@@ -27,6 +27,8 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Error.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="ClientApp\build\asset-manifest.json" />
+      <_ContentIncludedByDefault Remove="ClientApp\build\manifest.json" />
     </ItemGroup>
 
     <ItemGroup>

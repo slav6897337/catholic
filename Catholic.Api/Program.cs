@@ -1,7 +1,9 @@
 using Catholic.Api;
 using Catholic.Core.Clients;
 using Catholic.Core.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
