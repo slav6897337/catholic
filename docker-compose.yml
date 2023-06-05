@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  backend:
+    container_name: catholic-api
+    image: catholic-api
+    build: .
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:5000
+    ports:
+      - "5000:5000"
+  client:
+    container_name: client
+    image: client
+    build: 
+        context: ../../Learning/web
+        dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  proxy:
+    container_name: proxy
+    image: nginx
+    build: 
+        context: .
+        dockerfile: nginx.dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - client  
