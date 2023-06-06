@@ -4,15 +4,24 @@ import Api from '../Utiles/Api';
 import moment from 'moment';
 import './DailyBibleQuote.css';
 
+const defaultQuote: IBibleQuote = {
+    bookname: 'John',
+    chapter: '3',
+    verse: '16',
+    text: 'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.'
+}
+
 const DailyBibleQuote = () => {
-  const [quote, setQuote] = React.useState<IBibleQuote>();
+  const [quote, setQuote] = React.useState<IBibleQuote>(defaultQuote);
 
   useEffect(() => {
     Api.getDailyBibleQuote().then((quote: IBibleQuote) => {
-      setQuote(quote);
+        if(quote){
+            setQuote(quote);
+        }
     });
   }, []);
-  console.log(JSON.stringify(quote));
+
   return (
     <div className="quote" style={{backgroundImage: 'url(/bible-quote.png)'}}>
       <div className="background-container">
