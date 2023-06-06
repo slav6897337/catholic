@@ -1,0 +1,22 @@
+.activities{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.activities h1{
+    font-family: 'Cambay', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 2.9rem;
+    margin-bottom: 1rem;
+    color: #016066;
+}
+
+.activities-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

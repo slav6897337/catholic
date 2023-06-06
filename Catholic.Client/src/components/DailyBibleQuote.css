@@ -1,0 +1,91 @@
+.quote{
+    width: 100%;
+}
+
+.background-container {
+    background: rgba(1, 96, 102, 0.69);
+    height: 20rem;
+    width: 100%;
+}
+
+.quote-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 5rem;
+    padding-left: 7rem;
+}
+
+.horizontal-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.vertical-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.vertical-line {
+    width: 0;
+    height: 6.6rem;
+    border: 1px solid #E7E7E7;
+    margin-left: 0.5rem;
+    margin-right: 0.75rem;
+}
+
+.quote-title {
+    font-size: 2rem;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    background: linear-gradient(90.88deg, #DBBF9A 0.32%, #C7AF8D 45.4%, #977458 93.4%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.quote-text {
+    margin-top: 0.8rem;
+    max-width: 30rem;
+    height: auto;
+    font-size: 1.2rem;
+    font-family: 'Cardo', serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.6rem;
+    color: #DBDBDB;
+}
+
+.reference {
+    width: 32rem;
+    height: 1rem;
+    font-size: 0.8rem;
+    font-family: 'Cambay', cursive;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    color: #DBDBDB;
+    margin-top: 0.4rem;
+}
+
+.date {
+    max-width: 1.4rem;
+    height: 6rem;
+    font-family: 'Cardo', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: #B6B6B6;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
