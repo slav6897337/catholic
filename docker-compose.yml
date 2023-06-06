@@ -13,7 +13,7 @@ services:
     container_name: client
     image: client
     build: 
-        context: ../../Learning/web
+        context: ./Catholic.Client
         dockerfile: Dockerfile
     ports:
       - "3000:3000"
