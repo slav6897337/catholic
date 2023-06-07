@@ -41,17 +41,26 @@
 
 .welcome-image {
     width: 50%;
-    height: 35%;
+    height: auto;
     margin: 6rem;
-    position: relative;   
+    position: relative;
 }
 
-.overlay {
+.overlay-top {
     position: absolute;
     top: 0;
     right: 0;
     width: 96%;
-    height: 124%;
+    height: 5%;
+    background: #E8E2D6;
+}
+
+.overlay-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3%;
+    height: 96%;
     background: #E8E2D6;
 }
 
@@ -64,9 +73,7 @@
 }
 
 .welcome-picture {
-    position: absolute;
-    margin-top: 1rem;
+    margin-top: 3%;
     width: 97%;
     height: auto;
-    margin-right: 1rem;
 }

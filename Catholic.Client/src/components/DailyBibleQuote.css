@@ -4,7 +4,6 @@
 
 .background-container {
     background: rgba(1, 96, 102, 0.69);
-    height: 20rem;
     width: 100%;
 }
 
@@ -13,8 +12,9 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 5rem;
-    padding-left: 7rem;
+    padding-top: 6%;
+    padding-bottom: 6%;
+    padding-left: 6%;
 }
 
 .horizontal-container {
