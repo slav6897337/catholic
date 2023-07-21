@@ -9,7 +9,7 @@ public static class AdminApi
 {
     public static void MapAdminApi(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapHealthChecks("/api/health");
+        endpoints.MapGet("/api/health", () => new {Status = "OK"});
 
         // endpoints.MapGet("/api/token", () =>
         // {
@@ -21,7 +21,7 @@ public static class AdminApi
         //
         //     return token;
         // });
-        
+
         endpoints.MapGet("/api/update", () =>
         {
             var process = new Process()
@@ -36,7 +36,7 @@ public static class AdminApi
                 }
             };
             process.Start();
-            
+
             return "Done";
         }).SystemAuthorization();
     }
