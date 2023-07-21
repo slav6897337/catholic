@@ -1,10 +1,10 @@
 using Catholic.Core.Services;
 
-namespace Catholic.Api;
+namespace Catholic.Api.Apis;
 
-public static class Api
+public static class BibleApi
 {
-    public static void MapApi(this IEndpointRouteBuilder endpoints)
+    public static void MapBibleApi(this IEndpointRouteBuilder endpoints)
     {
         endpoints.MapGet("/api/daily-bible-quote", (BibleService bibleService) =>
             bibleService.GetBibleQuoteAsync());

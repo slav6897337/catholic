@@ -1,0 +1,8 @@
+namespace Catholic.Domain;
+
+public class RequestQuery
+{
+    public bool? HolyMassOnly { get; set; }
+    public int? Skip { get; set; }
+    public int? Take { get; set; }
+}

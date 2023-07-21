@@ -7,7 +7,6 @@ public class BibleClient
 {
     private readonly HttpClient http;
 
-
     public BibleClient(IHttpClientFactory httpClientFactory)
     {
         this.http = httpClientFactory.CreateClient("Bible");
@@ -17,7 +16,7 @@ public class BibleClient
     public async Task<BibleQuote> GetBibleQuoteAsync()
     {
         var quotes = await SendAsync<BibleQuote>(HttpMethod.Get, "/api/?passage=random&type=json");
-        return quotes.FirstOrDefault() ?? new ();
+        return quotes.FirstOrDefault() ?? new();
     }
 
     private async Task<List<TObject>> SendAsync<TObject>(HttpMethod method, string url) where TObject : class, new()
