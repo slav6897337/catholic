@@ -9,8 +9,8 @@ public static class AdminApi
 {
     public static void MapAdminApi(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/health", () => "OK");
-        
+        endpoints.MapHealthChecks("/health");
+
         // endpoints.MapGet("/api/token", () =>
         // {
         //     var jwtSecret = Environment.GetEnvironmentVariable("JwtSecret");
