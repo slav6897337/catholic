@@ -22,7 +22,7 @@ public static class AdminApi
         //     return token;
         // });
         
-        endpoints.MapPost("/api/update", () =>
+        endpoints.MapGet("/api/update", () =>
         {
             var process = new Process()
             {
