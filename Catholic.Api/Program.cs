@@ -13,6 +13,8 @@ Env.Load();
 
 builder.Services.AddAuth();
 
+builder.Services.AddCustomCors();
+
 builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<BibleService>();
@@ -26,7 +28,7 @@ builder.Services.AddMemoryCache();
 var app = builder.Build();
 
 app.UseExHandler();
-
+app.UseCustomCors();
 app.UseAuthentication();
 app.UseAuthorization();
 

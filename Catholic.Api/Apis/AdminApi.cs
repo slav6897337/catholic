@@ -21,23 +21,5 @@ public static class AdminApi
         //
         //     return token;
         // });
-
-        endpoints.MapGet("/api/update", () =>
-        {
-            var process = new Process()
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "/bin/bash",
-                    Arguments = "/scripts/docker-update.sh",
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
-            process.Start();
-
-            return "Done";
-        }).SystemAuthorization();
     }
 }

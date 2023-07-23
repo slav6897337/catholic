@@ -41,6 +41,25 @@ public static class AppExtensions
         services.AddAuthorization();
     }
 
+    public static void AddCustomCors(this IServiceCollection services)
+    {
+        services.AddCors(opt =>
+        {
+            opt.AddPolicy("AllowLocalhost",
+                pol =>
+                {
+                    pol.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+        });
+    }
+
+    public static void UseCustomCors(this IApplicationBuilder app)
+    {
+        app.UseCors("AllowLocalhost");
+    }
+
     public static void UseExHandler(this IApplicationBuilder app)
     {
         app.UseExceptionHandler(c => c.Run(async context =>
