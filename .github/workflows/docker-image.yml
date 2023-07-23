@@ -52,4 +52,4 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: /catholic/docker-update.sh          
+        script: ~/root/catholic/docker-update.sh
