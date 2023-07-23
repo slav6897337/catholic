@@ -27,8 +27,8 @@ builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
-app.UseExHandler();
 app.UseCustomCors();
+app.UseExHandler();
 app.UseAuthentication();
 app.UseAuthorization();
 

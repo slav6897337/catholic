@@ -51,6 +51,10 @@ public static class AppExtensions
                     pol.WithOrigins("http://localhost:3000")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
+                    
+                    pol.WithOrigins("https://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                 });
         });
     }
