@@ -21,6 +21,7 @@ builder.Services.AddScoped<BibleService>();
 builder.Services.AddScoped<NotesService>();
 builder.Services.AddScoped<NewsService>();
 builder.Services.AddScoped<PagesService>();
+builder.Services.AddScoped<HolyMassService>();
 
 builder.Services.AddScoped<BibleClient>();
 builder.Services.AddMemoryCache();
@@ -36,6 +37,7 @@ app.MapBibleApi();
 app.MapNotesApi();
 app.MapNewsApi();
 app.MapPagesApi();
+app.MapHolyMassApi();
 app.MapAdminApi();
 
 app.Run("http://*:5000");

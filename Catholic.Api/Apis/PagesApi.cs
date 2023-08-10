@@ -10,6 +10,9 @@ public static class PagesApi
     {
         endpoints.MapGet("/api/pages-list", (PagesService pagesService) =>
             pagesService.ListPagesAsync());
+
+        endpoints.MapGet("/api/pages", (PagesService pagesService) =>
+            pagesService.GetAllAsync());
             
         endpoints.MapGet("/api/pages/{uri}", (PagesService pagesService, string uri) =>
             pagesService.GetPageAsync(uri));
