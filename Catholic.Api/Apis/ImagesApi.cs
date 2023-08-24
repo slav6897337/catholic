@@ -15,7 +15,7 @@ public static class ImagesApi
 
         endpoints.MapGet("/api/images/{name}", (HttpContext context, string name) =>
         {
-            var file = File.OpenRead($"images/{name}");
+            var file = File.OpenRead($"app/images/{name}");
             context.Response.RegisterForDisposeAsync(file);
             
             new FileExtensionContentTypeProvider().TryGetContentType(name, out var type);
