@@ -9,23 +9,28 @@ public class ImagesService
     
     public async Task<string[]> GetImagesAsync()
     {
-        return Directory.GetFiles("app/images");
+        return Directory.GetFiles("./images");
+    }
+    
+    public async Task<string[]> ListFilesAsync()
+    {
+        return Directory.GetFiles("./");
     }
 
 
     public async Task UploadImageAsync(string fileName, MemoryStream memoryStream)
     {
-        if (Directory.Exists("app/images") == false)
+        if (Directory.Exists("./images") == false)
         {
-            Directory.CreateDirectory("app/images");
+            Directory.CreateDirectory("images");
         }
         
-        await using var file = File.OpenWrite($"app/images/{fileName}");
+        await using var file = File.OpenWrite($"./images/{fileName}");
         await memoryStream.CopyToAsync(file);
     }
 
     public void DeleteAsync(string name)
     {
-        Directory.Delete($"app/images/{name}", true);
+        Directory.Delete($"./images/{name}", true);
     }
 }
