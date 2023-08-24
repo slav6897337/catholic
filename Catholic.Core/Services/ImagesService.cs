@@ -9,14 +9,10 @@ public class ImagesService
     
     public async Task<string[]> GetImagesAsync()
     {
-        return Directory.GetFiles("./images");
+        var files = Directory.GetFiles("./images");
+        files = files.Select(f => f.Replace("./", "/")).ToArray();
+        return files;
     }
-    
-    public async Task<string[]> ListFilesAsync()
-    {
-        return Directory.GetFiles("./");
-    }
-
 
     public async Task UploadImageAsync(string fileName, MemoryStream memoryStream)
     {

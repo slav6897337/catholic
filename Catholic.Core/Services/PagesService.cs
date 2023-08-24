@@ -1,34 +1,50 @@
 using Catholic.Core.Repositories;
 using Catholic.Domain;
-using MongoDB.Driver;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Catholic.Core.Services;
 
 public class PagesService : MongoRepository<Page>
 {
-    public PagesService() : base("Pages")
+    public PagesService(IMemoryCache cache) : base("Pages", cache)
     {
     }
     
-    public async Task<Page> GetPageAsync(string uri)
+    public async Task<Page?> GetPageAsync(string uri)
     {
-        var page = await collection
-            .Find(i => i.UrlSegment == uri)
-            .FirstOrDefaultAsync();
+        var pages = await GetAllAsync();
         
-        return page;
+        return pages?.FirstOrDefault(i => i.UrlSegment == uri);;
     }
-
+    
+    // public async Task<Page> GetPageAsync(string uri)
+    // {
+    //     var page = await collection
+    //         .Find(i => i.UrlSegment == uri)
+    //         .FirstOrDefaultAsync();
+    //     
+    //     return page;
+    // }
+    
     public async Task<List<string>> ListPagesAsync()
     {
-        var pages = await collection
-            .Find(i => true)
-            .Project(i => i.UrlSegment)
-            .ToListAsync();
-
+        var pages = await GetAllAsync();
         
-        return pages?.Where(p => !string.IsNullOrWhiteSpace(p)).ToList() ?? new List<string>();
+        return pages
+            ?.Where(p => !string.IsNullOrWhiteSpace(p.UrlSegment))
+            .Select(p => p.UrlSegment)
+            .ToList() ?? new List<string>();
     }
+    
+    // public async Task<List<string>> ListPagesAsync()
+    // {
+    //     var pages = await collection
+    //         .Find(i => true)
+    //         .Project(i => i.UrlSegment)
+    //         .ToListAsync();
+    //     
+    //     return pages?.Where(p => !string.IsNullOrWhiteSpace(p)).ToList() ?? new List<string>();
+    // }
 
     public async Task<Page> AddPageAsync(Page page)
     {
@@ -44,6 +60,8 @@ public class PagesService : MongoRepository<Page>
         }
         
         await collection.InsertOneAsync(page);
+
+        UpdateCacheInBackground();
           
         return page;   
     }
@@ -55,7 +73,7 @@ public class PagesService : MongoRepository<Page>
         ArgumentException.ThrowIfNullOrEmpty(page.Body);
         
         await UpdateAsync(id, page);
-          
+
         return page;   
     }
 }

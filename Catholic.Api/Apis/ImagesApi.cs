@@ -12,9 +12,6 @@ public static class ImagesApi
     {
         endpoints.MapGet("/api/images", (ImagesService imagesService) =>
             imagesService.GetImagesAsync());
-        
-        endpoints.MapGet("/api/files", (ImagesService imagesService) =>
-            imagesService.ListFilesAsync());
 
         endpoints.MapGet("/api/images/{name}", (HttpContext context, string name) =>
         {
@@ -25,8 +22,7 @@ public static class ImagesApi
             
             return Results.File(file, $"image/{type}", file.Name);
         });
-            
-
+        
         endpoints.MapPost("/api/images",
             async (ImagesService imagesService, [FromForm] IFormFileCollection collection) =>
             {

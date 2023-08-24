@@ -1,11 +1,12 @@
 using Catholic.Core.Repositories;
 using Catholic.Domain;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Catholic.Core.Services;
 
 public class NotesService : MongoRepository<Note>
 {
-    public NotesService() : base("Notes")
+    public NotesService(IMemoryCache cache) : base("Notes", cache)
     {
     }
     
@@ -15,6 +16,8 @@ public class NotesService : MongoRepository<Note>
         ArgumentException.ThrowIfNullOrEmpty(note.AdditionalTitle);
 
         await collection.InsertOneAsync(note);
+        
+        UpdateCacheInBackground();
           
         return note;   
     }

@@ -1,11 +1,12 @@
 using Catholic.Core.Repositories;
 using Catholic.Domain;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Catholic.Core.Services;
 
 public class NewsService : MongoRepository<News>
 {
-    public NewsService() : base("News")
+    public NewsService(IMemoryCache cache) : base("News", cache)
     {
     }
     
@@ -16,6 +17,8 @@ public class NewsService : MongoRepository<News>
         ArgumentException.ThrowIfNullOrEmpty(news.Description);
         
         await collection.InsertOneAsync(news);
+        
+        UpdateCacheInBackground();
           
         return news;   
     }
