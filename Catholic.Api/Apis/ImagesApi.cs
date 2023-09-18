@@ -1,4 +1,3 @@
-using System.Net.Mime;
 using Catholic.Api.Filters;
 using Catholic.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +12,10 @@ public static class ImagesApi
         endpoints.MapGet("/api/images", (ImagesService imagesService) =>
             imagesService.GetImagesAsync());
 
-        endpoints.MapGet("/api/images/{name}", (HttpContext context, ImagesService imagesService, string name) =>
+        endpoints.MapGet("/api/images/{name}", (HttpContext context, string name) =>
         {
-            var file = imagesService.GetImageAsync(name);
+            var file = File.OpenRead($"./images/{name}");
             context.Response.RegisterForDisposeAsync(file);
-            
             new FileExtensionContentTypeProvider().TryGetContentType(name, out var type);
             
             return Results.File(file, $"image/{type}", file.Name);
