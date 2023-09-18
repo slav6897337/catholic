@@ -1,10 +1,15 @@
 
+using Microsoft.Extensions.Caching.Memory;
+
 namespace Catholic.Core.Services;
 
 public class ImagesService
 {
-    public ImagesService()
+    private readonly IMemoryCache cache;
+
+    public ImagesService(IMemoryCache cache)
     {
+        this.cache = cache;
     }
     
     public async Task<string[]> GetImagesAsync()
@@ -12,6 +17,18 @@ public class ImagesService
         var files = Directory.GetFiles("./images");
         files = files.Select(f => f.Replace("./", "/")).ToArray();
         return files;
+    }
+    
+    public FileStream GetImageAsync(string name)
+    {
+        var cacheKey = $"ImageCache-{name}";
+        var file = cache.GetOrCreate(cacheKey, entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
+            return File.OpenRead($"./images/{name}");
+        });
+        
+        return file;
     }
 
     public async Task UploadImageAsync(string fileName, MemoryStream memoryStream)

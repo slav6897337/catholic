@@ -13,9 +13,9 @@ public static class ImagesApi
         endpoints.MapGet("/api/images", (ImagesService imagesService) =>
             imagesService.GetImagesAsync());
 
-        endpoints.MapGet("/api/images/{name}", (HttpContext context, string name) =>
+        endpoints.MapGet("/api/images/{name}", (HttpContext context, ImagesService imagesService, string name) =>
         {
-            var file = File.OpenRead($"./images/{name}");
+            var file = imagesService.GetImageAsync(name);
             context.Response.RegisterForDisposeAsync(file);
             
             new FileExtensionContentTypeProvider().TryGetContentType(name, out var type);

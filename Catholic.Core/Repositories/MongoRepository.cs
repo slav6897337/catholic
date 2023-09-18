@@ -44,7 +44,11 @@ public abstract class MongoRepository<TObject> where TObject : Entity
             return await GetAsync(filter, sortBy, ascending);
         }
 
-        return await cache.GetOrCreateAsync(key, async entry => await GetAsync(filter, sortBy, ascending));
+        return await cache.GetOrCreateAsync(key, async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
+            return await GetAsync(filter, sortBy, ascending);
+        });
     }
 
     private async Task<List<TObject>> GetAsync(
