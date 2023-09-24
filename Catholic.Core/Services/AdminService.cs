@@ -10,16 +10,17 @@ public class AdminService : MongoRepository<AdminInfo>
 {
     public const string TokenType = "TokenType";
     public const string AdminToken = "AdminToken";
+    public const string SystemToken = "SystemToken";
     
     public AdminService(IMemoryCache cache) : base("Admins", cache)
     {
     }
     
-    public async Task<AdminInfo?> GetAdminAsync(string name, string pass)
+    public async Task<AdminInfo?> GetAdminAsync(AdminInfo adminInfo)
     {
         var admins = await GetAllAsync();
         
-        var admin = admins?.FirstOrDefault(i => i.Name == name && i.Pass == pass)
+        var admin = admins?.FirstOrDefault(i => i.Name == adminInfo.Name && i.Pass == adminInfo.Pass)
             ?? throw new Exception("Invalid credentials");
         
         var jwtSecret = Environment.GetEnvironmentVariable("JwtSecret");
@@ -31,6 +32,17 @@ public class AdminService : MongoRepository<AdminInfo>
         admin.Token = token;
         
         return admin;
+    }
+
+    public string GenerateSystemToken()
+    {
+        var jwtSecret = Environment.GetEnvironmentVariable("JwtSecret");
+        var token = Jwt.Create(jwtSecret, new Claim[]
+        {
+            new Claim(TokenType, SystemToken)
+        }, DateTime.UtcNow.AddYears(10));
+
+        return token;
     }
 
     public async Task<List<AdminInfo>> ListAdminsAsync()

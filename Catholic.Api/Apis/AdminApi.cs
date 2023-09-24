@@ -11,9 +11,9 @@ public static class AdminApi
     {
         endpoints.MapGet("/api/health", () => new {Status = "OK"});
 
-        endpoints.MapGet("/api/admins/token", async (string name, string pass, AdminService service) =>
+        endpoints.MapPost("/api/admins/token", async (AdminInfo adminInfo, AdminService service) =>
         {
-            var admin = await service.GetAdminAsync(name, pass);
+            var admin = await service.GetAdminAsync(adminInfo);
             return admin;
         });
         
@@ -35,5 +35,12 @@ public static class AdminApi
             var adminInfo = await service.UpdateAdminAsync(id, admin);
             return adminInfo;
         }).SystemAuthorization();
+        
+        
+        // endpoints.MapGet("/api/admins/system/token", (AdminService service) =>
+        // {
+        //     var token =  service.GenerateSystemToken();
+        //     return token;
+        // });
     }
 }
