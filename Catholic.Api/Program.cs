@@ -23,6 +23,7 @@ builder.Services.AddScoped<NewsService>();
 builder.Services.AddScoped<PagesService>();
 builder.Services.AddScoped<HolyMassService>();
 builder.Services.AddScoped<ImagesService>();
+builder.Services.AddScoped<AdminService>();
 
 builder.Services.AddScoped<BibleClient>();
 builder.Services.AddMemoryCache();
