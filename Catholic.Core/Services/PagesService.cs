@@ -14,7 +14,7 @@ public class PagesService : MongoRepository<Page>
     {
         var pages = await GetAllAsync();
         
-        return pages?.FirstOrDefault(i => i.UrlSegment == uri);;
+        return pages?.FirstOrDefault(i => i.UrlSegment == uri);
     }
     
     // public async Task<Page> GetPageAsync(string uri)
