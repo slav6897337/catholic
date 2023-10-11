@@ -27,6 +27,6 @@ public class ImagesService
 
     public void DeleteAsync(string name)
     {
-        Directory.Delete($"./images/{name}", true);
+        File.Delete($"./images/{name}");
     }
 }
