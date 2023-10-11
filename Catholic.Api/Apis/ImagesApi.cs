@@ -30,7 +30,7 @@ public static class ImagesApi
                 await file.CopyToAsync(memoryStream);
                 memoryStream.Position = 0;
                 await imagesService.UploadImageAsync(file.FileName, memoryStream);
-                return file.FileName;
+                return $"/api/images/{file.FileName}";
             }).AdminAuthorization();
         
         endpoints.MapDelete("/api/images/{name}", (ImagesService imagesService, string name) =>
