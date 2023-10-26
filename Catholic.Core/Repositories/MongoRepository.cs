@@ -49,7 +49,9 @@ public abstract class MongoRepository<TObject> where TObject : Entity
 
         if (sortBy != null)
         {
-            result = result?.OrderBy(sortBy.Compile()).ToList();
+            result = ascending 
+                ? result?.OrderBy(sortBy.Compile()).ToList()
+                : result?.OrderByDescending(sortBy.Compile()).ToList();
         }
 
         return result;
