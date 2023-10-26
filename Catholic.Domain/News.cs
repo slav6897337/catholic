@@ -7,4 +7,5 @@ public class News : Entity
     public string? Description { get; set; }
     
     public bool IsChurchNote { get; set; }
+    public bool IsChurchNews { get; set; }
 }
