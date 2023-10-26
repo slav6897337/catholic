@@ -39,16 +39,20 @@ public abstract class MongoRepository<TObject> where TObject : Entity
         Expression<Func<TObject, object>>? sortBy = null,
         bool ascending = true)
     {
-        if (cache == null)
+        var result = cache == null 
+            ? await GetAsync(filter, sortBy, ascending)
+            : await cache.GetOrCreateAsync(key, async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
+                return await GetAsync(filter, sortBy, ascending);
+            });
+
+        if (sortBy != null)
         {
-            return await GetAsync(filter, sortBy, ascending);
+            result = result?.OrderBy(sortBy.Compile()).ToList();
         }
 
-        return await cache.GetOrCreateAsync(key, async entry =>
-        {
-            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1);
-            return await GetAsync(filter, sortBy, ascending);
-        });
+        return result;
     }
 
     private async Task<List<TObject>> GetAsync(
