@@ -10,7 +10,7 @@ public static class NewsApi
     public static void MapNewsApi(this IEndpointRouteBuilder endpoints)
     {
         endpoints.MapGet("/api/news/all", (NewsService newsService) =>
-            newsService.GetAllAsync());
+            newsService.GetAllAsync(sortBy: n => n.Date, ascending: false));
         
         endpoints.MapGet("/api/news", (NewsService newsService, [AsParameters] RequestQuery request) =>
             newsService.GetPagingAsync(request.Paging(), request.HolyMassOnly is true ? f => f.IsChurchNews : null));
