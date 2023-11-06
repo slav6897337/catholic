@@ -7,4 +7,5 @@ public class Note : Entity
     public string? Info { get; set; }
     public string? RepeatableDate { get; set; }
     public bool IsChurchNote { get; set; }
+    public bool IsHomeNote { get; set; } = true;
 }

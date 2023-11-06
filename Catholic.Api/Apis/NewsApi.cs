@@ -13,7 +13,7 @@ public static class NewsApi
             newsService.GetAllAsync());
         
         endpoints.MapGet("/api/news", (NewsService newsService, [AsParameters] RequestQuery request) =>
-            newsService.GetPagingAsync(request.Paging(), request.HolyMassOnly is true ? f => f.IsChurchNote : null));
+            newsService.GetPagingAsync(request.Paging(), request.HolyMassOnly is true ? f => f.IsChurchNews : null));
         
         endpoints.MapPost("/api/news", (NewsService newsService, News news) =>
             newsService.AddNewsAsync(news)).AdminAuthorization();
