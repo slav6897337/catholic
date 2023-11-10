@@ -11,6 +11,9 @@ public static class NotesApi
         endpoints.MapGet("/api/notes", (NotesService notesService, [AsParameters] RequestQuery request) =>
             notesService.GetAllAsync(request.HolyMassOnly is true ? f => f.IsChurchNote : null));
         
+        endpoints.MapGet("/api/notes/all", (NotesService notesService) =>
+            notesService.GetAllAsync(sortBy: n => n.Date, ascending: false));
+        
         endpoints.MapPost("/api/notes", (NotesService notesService, Note note) =>
             notesService.AddNoteAsync(note)).AdminAuthorization();
         
