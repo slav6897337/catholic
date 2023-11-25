@@ -9,7 +9,7 @@ public static class AdminApi
     
     public static void MapAdminApi(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/health", () => new {Status = "OK"});
+        endpoints.MapGet("/api/health", () => new ApiStatus("OK"));
 
         endpoints.MapPost("/api/admins/token", async (AdminInfo adminInfo, AdminService service) =>
         {

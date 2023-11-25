@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catholic.Core", "Catholic.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catholic.Domain", "Catholic.Domain\Catholic.Domain.csproj", "{2AA41541-240F-4AF0-8684-3B095CA845CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catholic.SourceGenerator", "Catholic.SourceGenerator\Catholic.SourceGenerator.csproj", "{70DD8C50-C576-4BF6-9057-4DB0DAB14F89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{2AA41541-240F-4AF0-8684-3B095CA845CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA41541-240F-4AF0-8684-3B095CA845CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA41541-240F-4AF0-8684-3B095CA845CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70DD8C50-C576-4BF6-9057-4DB0DAB14F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DD8C50-C576-4BF6-9057-4DB0DAB14F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70DD8C50-C576-4BF6-9057-4DB0DAB14F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70DD8C50-C576-4BF6-9057-4DB0DAB14F89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

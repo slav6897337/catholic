@@ -3,6 +3,7 @@ using Catholic.Api.Apis;
 using Catholic.Core.Clients;
 using Catholic.Core.Helpers;
 using Catholic.Core.Services;
+using Catholic.SourceGenerator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,11 @@ builder.Services.CleanupDefaultLogging();
 L.Info("Starting up Catholic.Api");
 
 Env.Load();
+
+builder.Services.ConfigureHttpJsonOptions(opt =>
+{
+    opt.SerializerOptions.TypeInfoResolver = new SerializerContext();
+});
 
 builder.Services.AddAuth();
 

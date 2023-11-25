@@ -1,10 +1,10 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 
 WORKDIR /app
 COPY . ./
 RUN dotnet publish Catholic.Api -c Release -o out -r linux-x64 -p:PublishReadyToRun=true
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
