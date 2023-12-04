@@ -19,7 +19,7 @@ public static class ImagesApi
             new FileExtensionContentTypeProvider().TryGetContentType(name, out var type);
             
             return Results.File(file, $"image/{type}", file.Name);
-        });
+        }).DisableAntiforgery();
         
         endpoints.MapPost("/api/images",
             async (ImagesService imagesService, [FromForm] IFormFileCollection collection) =>
@@ -31,7 +31,7 @@ public static class ImagesApi
                 memoryStream.Position = 0;
                 await imagesService.UploadImageAsync(file.FileName, memoryStream);
                 return $"/images/{file.FileName}";
-            }).AdminAuthorization();
+            }).AdminAuthorization().DisableAntiforgery();
         
         endpoints.MapDelete("/api/images/{name}", (ImagesService imagesService, string name) =>
             imagesService.DeleteAsync(name)).AdminAuthorization();
