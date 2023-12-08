@@ -22,14 +22,17 @@ public static class ImagesApi
         }).DisableAntiforgery();
         
         endpoints.MapPost("/api/images",
-            async (ImagesService imagesService, [FromForm] IFormFileCollection collection) =>
+            async (ImagesService imagesService,
+                [FromForm] IFormFileCollection collection,
+                [FromQuery] int? resizeWidth,
+                [FromQuery] int? resizeHeight) =>
             {
                 using var memoryStream = new MemoryStream();
                 var file = collection.FirstOrDefault() ?? throw new("File not found");
 
                 await file.CopyToAsync(memoryStream);
                 memoryStream.Position = 0;
-                await imagesService.UploadImageAsync(file.FileName, memoryStream);
+                await imagesService.UploadImageAsync(file.FileName, memoryStream, resizeWidth, resizeHeight);
                 return $"/images/{file.FileName}";
             }).AdminAuthorization().DisableAntiforgery();
         
