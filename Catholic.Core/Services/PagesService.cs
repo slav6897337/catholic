@@ -50,7 +50,6 @@ public class PagesService : MongoRepository<Page>
     {
         ArgumentException.ThrowIfNullOrEmpty(page.Title);
         ArgumentException.ThrowIfNullOrEmpty(page.UrlSegment);
-        ArgumentException.ThrowIfNullOrEmpty(page.Body);
         
         var pages = await ListPagesAsync();
         
@@ -70,7 +69,6 @@ public class PagesService : MongoRepository<Page>
     {
         ArgumentException.ThrowIfNullOrEmpty(page.Title);
         ArgumentException.ThrowIfNullOrEmpty(page.UrlSegment);
-        ArgumentException.ThrowIfNullOrEmpty(page.Body);
         
         await UpdateAsync(id, page);
 

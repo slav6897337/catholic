@@ -14,7 +14,6 @@ public class NewsService : MongoRepository<News>
     public async Task<News> AddNewsAsync(News news)
     {
         ArgumentException.ThrowIfNullOrEmpty(news.Title);
-        ArgumentException.ThrowIfNullOrEmpty(news.Description);
         
         await collection.InsertOneAsync(news);
         
@@ -26,7 +25,6 @@ public class NewsService : MongoRepository<News>
     public async Task<News> UpdateNewsAsync(string id, News news)
     {
         ArgumentException.ThrowIfNullOrEmpty(news.Title);
-        ArgumentException.ThrowIfNullOrEmpty(news.Description);
         
         await UpdateAsync(id, news);
           
