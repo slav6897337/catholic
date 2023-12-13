@@ -1,4 +1,5 @@
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Webp;
 using SixLabors.ImageSharp.Processing;
 
 namespace Catholic.Core.Services;
@@ -16,16 +17,34 @@ public class ImagesService
         return files;
     }
     
-    public async Task UploadImageAsync(string fileName, MemoryStream memoryStream, int? resizeWidth, int? resizeHeight)
+    public async Task<string> UploadImageAsync(string fileName, MemoryStream memoryStream, int? resizeWidth, int? resizeHeight)
     {
         if (Directory.Exists("./images") == false)
         {
             Directory.CreateDirectory("images");
         }
         
-        await using var file = File.OpenWrite($"./images/{fileName}");
-        await memoryStream.CopyToAsync(file);
-        await ResizeImageAsync(fileName, memoryStream, resizeWidth, resizeHeight);
+        var newFileName = fileName.LastIndexOf('.') switch
+        {
+            -1 => fileName,
+            var index => $"{fileName[..index]}.webp"
+        };
+        
+        using var image = await Image.LoadAsync(memoryStream);
+        await image.SaveAsync($"./images/{newFileName}", new WebpEncoder());
+
+        if (resizeWidth != null || resizeHeight != null)
+        {
+            resizeWidth ??= resizeHeight * image.Width / image.Height;
+            resizeHeight ??= resizeWidth * image.Height / image.Width;
+        
+            image.Mutate(x => x
+                .Resize(resizeWidth.Value, resizeHeight.Value));
+            
+            await image.SaveAsync($"./images/min_{newFileName}", new WebpEncoder());
+        }
+
+        return newFileName;
     }
     
     public void DeleteAsync(string name)
@@ -46,6 +65,6 @@ public class ImagesService
         image.Mutate(x => x
             .Resize(resizeWidth.Value, resizeHeight.Value));
 
-        await image.SaveAsync($"./images/min_{fileName}");
+        await image.SaveAsync($"./images/min_{fileName}", new WebpEncoder());
     }
 }
