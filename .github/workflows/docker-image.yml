@@ -2,9 +2,9 @@ name: Catholic API
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "production" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "production" ]
 
 jobs:
   build:
@@ -52,7 +52,7 @@ jobs:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ secrets.PROD_HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        password: ${{ secrets.PROD_PASSWORD }}
         script: cd catholic ; ./docker-update.sh
