@@ -13,10 +13,20 @@ public class BibleClient
         this.http.BaseAddress = new Uri("https://labs.bible.org");
     }
 
-    public async Task<BibleQuote> GetBibleQuoteAsync()
+    public async Task<BibleQuote?> GetBibleQuoteAsync()
     {
-        var quotes = await SendAsync<BibleQuote>(HttpMethod.Get, "/api/?passage=random&type=json");
-        return quotes.FirstOrDefault() ?? new();
+        List<BibleQuote> quotes = new();
+        try
+        {
+             quotes = await SendAsync<BibleQuote>(HttpMethod.Get, "/api/?passage=random&type=json");
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+           
+        }
+        return quotes.FirstOrDefault();
     }
 
     private async Task<List<TObject>> SendAsync<TObject>(HttpMethod method, string url) where TObject : class, new()
