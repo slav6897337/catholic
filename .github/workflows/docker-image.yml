@@ -50,7 +50,7 @@ jobs:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.PROD_HOST }}
+        host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PROD_PASSWORD }}
+        password: ${{ secrets.PASSWORD }}
         script: cd catholic ; ./docker-update.sh
