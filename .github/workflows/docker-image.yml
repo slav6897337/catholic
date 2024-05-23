@@ -1,10 +1,8 @@
-name: Catholic API
-
 on:
   push:
-    branches: [ "production" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "production" ]
+    branches: [ "master" ]
 
 jobs:
   build:
