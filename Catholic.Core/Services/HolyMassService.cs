@@ -21,8 +21,9 @@ public class HolyMassService : MongoRepository<HolyMass>
     
     public async Task<HolyMass> UpdatePageAsync(string id, HolyMass holyMass)
     {
+        holyMass.Date = DateTime.UtcNow;
         await UpdateAsync(id, holyMass);
-          
+        
         return holyMass;   
     }
 }

@@ -70,6 +70,8 @@ public class PagesService : MongoRepository<Page>
         ArgumentException.ThrowIfNullOrEmpty(page.Title);
         ArgumentException.ThrowIfNullOrEmpty(page.UrlSegment);
         
+        page.Date = DateTime.UtcNow;
+        
         await UpdateAsync(id, page);
 
         return page;   

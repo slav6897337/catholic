@@ -26,6 +26,8 @@ public class NewsService : MongoRepository<News>
     {
         ArgumentException.ThrowIfNullOrEmpty(news.Title);
         
+        news.Date = DateTime.UtcNow;
+        
         await UpdateAsync(id, news);
           
         return news;   

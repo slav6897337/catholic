@@ -27,6 +27,8 @@ public class NotesService : MongoRepository<Note>
         ArgumentException.ThrowIfNullOrEmpty(note.Title);
         ArgumentException.ThrowIfNullOrEmpty(note.AdditionalTitle);
         
+        note.Date = DateTime.UtcNow;
+        
         await UpdateAsync(id, note);
           
         return note;   
