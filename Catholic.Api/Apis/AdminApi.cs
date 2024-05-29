@@ -30,7 +30,7 @@ public static class AdminApi
         }).SystemAuthorization();
         
             
-        endpoints.MapPut("/api/admins/id", async (string id, AdminInfo admin, AdminService service) =>
+        endpoints.MapPut("/api/admins/{id}", async (string id, AdminInfo admin, AdminService service) =>
         {
             var adminInfo = await service.UpdateAdminAsync(id, admin);
             return adminInfo;
